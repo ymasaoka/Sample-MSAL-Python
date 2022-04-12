@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    container_name: python3.10.4-msal
+    tty: true
+    volumes:
+      - ./sample:/usr/src/app
+    working_dir: "/usr/src/app"
+    env_file:
+      - web-variables.env
