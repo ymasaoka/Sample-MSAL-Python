@@ -1,3 +1,6 @@
+# 必要な API アクセス許可
+# Microsoft Graph/アプリケーションの許可/Mail.Send
+
 import os
 import msal
 import requests
