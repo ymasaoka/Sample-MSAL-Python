@@ -42,7 +42,6 @@ def get_mail(token):
     if res.ok:
         print('最新 10 件分のメール取得に成功しました。')
         data = res.json()
-        print(data['value'][0])
         for email in data['value']:
             print(f"件名: {email['subject']}, 差出人: {email['sender']['emailAddress']['name']} <{email['sender']['emailAddress']['address']}>")
             # email = {
