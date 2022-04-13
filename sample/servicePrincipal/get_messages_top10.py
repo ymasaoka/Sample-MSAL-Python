@@ -11,7 +11,8 @@ config = {
 
 authority = f"https://login.microsoftonline.com/{os.environ['TENANT_ID']}"
 scopes = ['https://graph.microsoft.com/.default']
-endpoint = f"https://graph.microsoft.com/v1.0/users/{config['user_id']}/messages?$select=sender,subject"
+endpoint = f"https://graph.microsoft.com/v1.0/users/{config['user_id']}/messages"
+# endpoint = f"https://graph.microsoft.com/v1.0/users/{config['user_id']}/messages?$select=sender,subject" # クエリパラメータで取得要素を絞ることも可能
 
 def connect_aad():
     cred = msal.ConfidentialClientApplication(
@@ -41,19 +42,37 @@ def get_mail(token):
     if res.ok:
         print('最新 10 件分のメール取得に成功しました。')
         data = res.json()
+        print(data['value'][0])
         for email in data['value']:
             print(f"件名: {email['subject']}, 差出人: {email['sender']['emailAddress']['name']} <{email['sender']['emailAddress']['address']}>")
             # email = {
             #     '@odata.etag': '***',
             #     'id': '***',
+            #     'createdDateTime': '2022-04-12T15:28:19Z',
+            #     'lastModifiedDateTime': '2022-04-12T15:28:21Z',
+            #     'receivedDateTime': '2022-04-12T15:28:20Z',
+            #     'sentDateTime':'2022-04-12T15:28:19Z',
             #     'subject': '***',
+            #     'bodyPreview': '***',
+            #     'importance': 'normal',
+            #     'webLink': 'https://outlook.office365.com/owa/?ItemID=***&exvsurl=1&viewmodel=ReadMessageItem',
+            #     'body': {
+            #         'contentType': 'text',
+            #         'content': '***'},
             #     'sender': {
             #         'emailAddress': {
             #             'name': '***',
-            #             'address': '***'
-            #         }
-            #     }
-            # }
+            #             'address': '***'}},
+            #     'from': {
+            #         'emailAddress': {
+            #             'name': '***',
+            #             'address': '***'}},
+            #     'toRecipients': [{
+            #         'emailAddress': {
+            #             'name': '***',
+            #             'address': '***'}}],
+            #     'ccRecipients': [],
+            #     'bccRecipients': []}
 
     else:
         print(res.json())
