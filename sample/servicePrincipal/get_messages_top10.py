@@ -73,7 +73,6 @@ def get_mail(token):
             #             'address': '***'}}],
             #     'ccRecipients': [],
             #     'bccRecipients': []}
-
     else:
         print(res.json())
 
