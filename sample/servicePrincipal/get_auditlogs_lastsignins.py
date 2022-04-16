@@ -47,7 +47,7 @@ def get_users_all(token):
 
 def get_auditlog_lastsingin(token, users):
     for user in users['value']:
-        q = f"?$filter=userId eq '{user['id']}'&$orderby=createdDateTime desc &$top=1"
+        q = f"?$filter=userId eq '{user['id']}'&$orderby=createdDateTime desc&$top=1"
         res = requests.get(
             f"{endpoint_auditlogs}{q}",
             headers={'Authorization': 'Bearer ' + token['access_token']})
