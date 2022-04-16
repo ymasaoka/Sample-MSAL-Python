@@ -1,7 +1,6 @@
 # 必要な API アクセス許可
 # Microsoft Graph/アプリケーションの許可/AuditLog.Read.All
 # Microsoft Graph/アプリケーションの許可/Directory.Read.All
-# Microsoft Graph/アプリケーションの許可/User.Read.All
 
 import os
 import msal
