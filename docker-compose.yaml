@@ -6,7 +6,7 @@ services:
     container_name: python3.10.4-msal
     tty: true
     volumes:
-      - ./sample:/usr/src/app
-    working_dir: "/usr/src/app"
+      - ./sample:/usr/src/sample
+    working_dir: "/usr/src/sample"
     env_file:
       - web-variables.env
