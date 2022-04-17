@@ -6,7 +6,6 @@ import os
 import msal
 import requests
 
-
 authority = f"https://login.microsoftonline.com/{os.environ['TENANT_ID']}"
 scopes = ['https://graph.microsoft.com/.default']
 endpoint_users = 'https://graph.microsoft.com/beta/users'
