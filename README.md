@@ -18,7 +18,7 @@ THUMBPRINT={サービスプリンシパル認証時に SSL 証明書を使用す
 `web-variables.env` ファイルを用意したら、Docker コンテナーを起動します。  
 
 ```bash
-docker-compose up -d --build
+docker compose up -d --build
 ```
 
 ## 自己署名証明書の作成
@@ -44,5 +44,5 @@ openssl x509 -req -days {証明書が有効期限切れになるまでの日数}
 `sample` フォルダにある Python コードは、以下の形で実行が可能です。  
 
 ```bash
-docker-compose run --rm app python3 {実行したい Python ファイル}
+docker compose run --rm app python3 {実行したい Python ファイル}
 ```
