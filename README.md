@@ -9,7 +9,7 @@
 `web-variables.env` ファイルには、以下の情報を記載し、起動する Python コンテナーの環境変数として利用できるようにします。  
 
 ```:web-variables.env
-CLIENT_ID={サービスプリンシパル ID}
+CLIENT_ID={サービスプリンシパルのクライアント ID}
 CLIENT_SECRET={サービスプリンシパルのクライアントシークレット値}
 TENANT_ID={テナント ID}
 THUMBPRINT={サービスプリンシパル認証時に SSL 証明書を使用する場合の thumbprint (拇印) 値}
