@@ -10,11 +10,20 @@ authority = f"https://login.microsoftonline.com/{os.environ['TENANT_ID']}"
 scopes = ['https://graph.microsoft.com/.default']
 endpoint_users = 'https://graph.microsoft.com/v1.0/users'
 endpoint_auditlogs = 'https://graph.microsoft.com/v1.0/auditLogs/signIns'
+secretkey_path = f""
 
 def connect_aad():
+    # クライアントシークレットを使用するパターン
+    # cred = msal.ConfidentialClientApplication(
+    #     client_id=os.environ['CLIENT_ID'],
+    #     client_credential=os.environ['CLIENT_SECRET'],
+    #     authority=authority)
+
+    # SSL 証明書を使用するパターン
+    # thumbprint (拇印) の値は、サービスプリンシパルに SSL 証明書を登録した際に表示される値を使用します
     cred = msal.ConfidentialClientApplication(
         client_id=os.environ['CLIENT_ID'],
-        client_credential=os.environ['CLIENT_SECRET'],
+        client_credential={"thumbprint": os.environ['THUMBPRINT'],"private_key": open(secretkey_path).read()},
         authority=authority)
 
     return cred
