@@ -1,6 +1,9 @@
 # Docker 
 web-variables.env
 
+# Sample Data
+/sample/dataSamples/*.pdf
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
