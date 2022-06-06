@@ -139,7 +139,7 @@ def upload_attachment(token, mid, file_info):
             # res_upload = {
             #     '@odata.context': "https://outlook.office.com/api/gv1.0/$metadata#users('objectID')/messages('messageID')/attachmentSessions/$entity", 
             #     'expirationDateTime': 'yyyy-mm-ddTHH:mm:ss.ffffffZ', 
-            #     'nextExpectedRanges': ['3276800']
+            #     'nextExpectedRanges': ['327680']
             # }
             print(f"uploading next {bytes_send_size} bytes, bytes_range={next_bytes_range}/{file_size - 1}: success")
             next_bytes_start_point = int(res_upload.json()['nextExpectedRanges'][0])
