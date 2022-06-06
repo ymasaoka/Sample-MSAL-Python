@@ -36,6 +36,7 @@ secretkey_path = f""
 
 attachment_file_path = "" # 添付ファイルのフルパス
 attachment_file_isBinary = True # バイナリファイルか否か
+bytes_send_size = 327680 # アップロードセッションで 1 PUT あたりに送信するバイト容量 (最大バイト数は 60MiB、分割する際は 320 KiB の倍数を指定)
 
 def connect_aad():
     # クライアントシークレットを使用するパターン
@@ -111,7 +112,6 @@ def upload_attachment(token, mid, file_info):
     file_size = os.path.getsize(attachment_file_path)
     print(f"アップロードするファイルのデータ容量: {file_size} bytes")
 
-    bytes_send_size = 3276800
     next_bytes_start_point = 0
     next_bytes_end_point = (bytes_send_size - 1)
     next_bytes_range = f"{res_session.json()['nextExpectedRanges'][0]}{next_bytes_end_point}"
