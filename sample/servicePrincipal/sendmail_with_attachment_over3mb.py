@@ -98,7 +98,7 @@ def upload_attachment(token, mid, file_info):
 
     if res_session.ok:
         print("アップロードセッションの作成に成功しました。")
-        # res = {
+        # res_session = {
         #     '@odata.context': 'https://graph.microsoft.com/v1.0/$metadata#microsoft.graph.uploadSession', 
         #     'uploadUrl': "https://outlook.office.com/api/gv1.0/users('objectID')/messages('messageID')/AttachmentSessions('sessionID')?authtoken={tokenValue}", 
         #     'expirationDateTime': 'yyyy-mm-ddTHH:mm:ss.ffffffZ', 
@@ -108,7 +108,7 @@ def upload_attachment(token, mid, file_info):
         print(res_session.json())
 
     print("ファイルデータのアップロードを開始します。")
-    file_size = os.path.getsize('./servicePrincipal/sample_attachment_over3mb.pdf')
+    file_size = os.path.getsize(attachment_file_path)
     print(f"アップロードするファイルのデータ容量: {file_size} bytes")
 
     bytes_send_size = 3276800
