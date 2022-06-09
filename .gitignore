@@ -2,7 +2,8 @@
 web-variables.env
 
 # Sample Data
-/sample/dataSamples/*.pdf
+/sample/dataSamples/*.*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

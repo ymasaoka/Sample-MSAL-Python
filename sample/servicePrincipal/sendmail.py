@@ -1,6 +1,7 @@
 # 必要な API アクセス許可
 # Microsoft Graph/アプリケーションの許可/Mail.Send
 
+import base64
 import os
 import msal
 import requests
@@ -37,6 +38,10 @@ scopes = ['https://graph.microsoft.com/.default']
 endpoint = f"https://graph.microsoft.com/v1.0/users/{config['user_from']}/sendMail"
 secretkey_path = f""
 
+attachment_file_isExists = False # 添付ファイル付きのメールを送信するか否か
+attachment_file_path = "" # 添付ファイルのフルパス
+attachment_file_isBinary = True # バイナリファイルか否か
+
 def connect_aad():
     # クライアントシークレットを使用するパターン
     # cred = msal.ConfidentialClientApplication(
@@ -66,7 +71,28 @@ def get_access_token(cred):
 
     return res
 
+def add_attachment():
+    content_bytes = None
+    if attachment_file_isBinary:
+        content_bytes = base64.b64encode(open(attachment_file_path,'rb').read()).decode('utf-8')
+    else:
+        content_bytes = base64.b64encode(open(attachment_file_path,'r').read()).decode('utf-8')
+
+    return {
+        'Attachments': [
+            {
+                '@odata.type': '#microsoft.graph.fileAttachment',
+                'Name': os.path.basename(attachment_file_path),
+                'ContentBytes': content_bytes
+            }
+        ]
+    }
+
 def send_mail(token):
+
+    if attachment_file_isExists:
+        email_msg['Message'].update(add_attachment())
+
     res = requests.post(
         endpoint,
         headers={'Authorization': 'Bearer ' + token['access_token']},
