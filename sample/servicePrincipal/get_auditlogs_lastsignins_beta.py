@@ -25,7 +25,6 @@ def connect_aad():
         client_credential={"thumbprint": os.environ['THUMBPRINT'],"private_key": open(secretkey_path).read()},
         authority=authority)
 
-
     return cred
 
 def get_access_token(cred):
