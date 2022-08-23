@@ -20,6 +20,9 @@ email_msg = {
             'ContentType': 'Text',
             'Content': 'これはテストメールです。'
         },
+        'from': {
+            'EmailAddress': {'Address': config['user_from']}
+        },
         # 'BccRecipients': [{
         #     'EmailAddress': {'Address': config['user_bcc']}
         # }],
