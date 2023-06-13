@@ -44,5 +44,5 @@ openssl x509 -req -days {証明書が有効期限切れになるまでの日数}
 `sample` フォルダにある Python コードは、以下の形で実行が可能です。  
 
 ```bash
-docker compose run --rm app python3 {実行したい Python ファイル}
+docker compose run --rm app python3 servicePrincipal/{実行したい Python ファイル名}
 ```
