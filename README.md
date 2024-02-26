@@ -12,7 +12,8 @@
 CLIENT_ID={サービスプリンシパルのクライアント ID}
 CLIENT_SECRET={サービスプリンシパルのクライアントシークレット値}
 TENANT_ID={テナント ID}
-THUMBPRINT={サービスプリンシパル認証時に SSL 証明書を使用する場合の thumbprint (拇印) 値}
+CLIENT_CERTIFICATION_PATH=./certs/{サービスプリンシパル認証時に SSL 証明書を使用する場合の秘密鍵ファイル}
+CLIENT_CERTIFICATION_THUMBPRINT={サービスプリンシパル認証時に SSL 証明書を使用する場合の thumbprint (拇印) 値}
 ```
 
 `web-variables.env` ファイルを用意したら、Docker コンテナーを起動します。  
