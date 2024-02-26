@@ -1,9 +1,11 @@
-# Docker 
+# macOS
+.DS_Store
+
+# Docker
 web-variables.env
 
-# Sample Data
-/sample/dataSamples/*.*
-
+# Repository contents
+sample/servicePrincipal/certs/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
